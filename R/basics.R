@@ -33,3 +33,25 @@ ohms_law <- function (r = NULL, i = NULL, v = NULL) {
     stop("Not enough arguments.")
   }
 }
+
+#' Calculates the power.
+#'
+#' @param i Current.
+#' @param v Voltage.
+#' @param r Resistance.
+#' @return The power in Watts.
+#' 
+#' @examples
+#' power(v = 12, r = 10)  # Power dissipated by a 10 ohm resistor at 12V
+power <- function (i = NULL, v = NULL, r = NULL) {
+  if ((i != NULL) & (v != NULL)) {
+    # P = VI
+    return(i * v)
+  } else if ((i != NULL) & (r != NULL)) {
+    # P = I^2 * R
+    return((i^2) * r)
+  } else if ((v != NULL) & (r != NULL)) {
+    # P = V^2 / R
+    return ((v^2) / r)
+  }
+}
