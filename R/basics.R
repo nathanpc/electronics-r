@@ -16,17 +16,17 @@ ohms_law <- function (r = NULL, i = NULL, v = NULL) {
   # V = RI
   
   # Only allow 2 arguments to be specified.
-  if ((r != NULL) & (i != NULL) & (v != NULL)) {
+  if (!is.null(r) & !is.null(i) & !is.null(v)) {
     stop("Too many arguments.")
   }
 
-  if ((r != NULL) & (i != NULL)) {
+  if (!is.null(r) & !is.null(i)) {
     # Voltage.
     return(r * i)
-  } else if ((v != NULL) & (r != NULL)) {
+  } else if (!is.null(v) & !is.null(r)) {
     # Current.
     return(v / r)
-  } else if ((v != NULL) & (i != NULL)) {
+  } else if (!is.null(v) & !is.null(i)) {
     # Resistance.
     return(v / i)
   } else {
@@ -44,14 +44,21 @@ ohms_law <- function (r = NULL, i = NULL, v = NULL) {
 #' @examples
 #' power(v = 12, r = 10)  # Power dissipated by a 10 ohm resistor at 12V
 power <- function (i = NULL, v = NULL, r = NULL) {
-  if ((i != NULL) & (v != NULL)) {
+  # Only allow 2 arguments to be specified.
+  if (!is.null(i) & !is.null(v) & !is.null(r)) {
+    stop("Too many arguments.")
+  }
+
+  if (!is.null(i) & !is.null(v)) {
     # P = VI
     return(i * v)
-  } else if ((i != NULL) & (r != NULL)) {
+  } else if (!is.null(i) & !is.null(r)) {
     # P = I^2 * R
     return((i^2) * r)
-  } else if ((v != NULL) & (r != NULL)) {
+  } else if (!is.null(v) & !is.null(r)) {
     # P = V^2 / R
     return ((v^2) / r)
+  } else {
+    stop("Not enough arguments.")
   }
 }
