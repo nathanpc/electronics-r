@@ -13,6 +13,8 @@
 #' @param r Resistance (Ohms).
 #' @param c Capacitance (Farads).
 #' @return Voltage in the capacitor at the time \eqn{t}.
+#' 
+#' @seealso \code{\link{capacitor.charge.values}}
 capacitor.charge <- function (t, vo, r, c) {
   return(vo * (1 - exp(-(t / (r * c)))))
 }
@@ -24,6 +26,8 @@ capacitor.charge <- function (t, vo, r, c) {
 #' @param r Resistance (Ohms).
 #' @param c Capacitance (Farads).
 #' @return Voltage in the capacitor at the time \eqn{t}.
+#' 
+#' @seealso \code{\link{capacitor.discharge.values}}
 capacitor.discharge <- function (t, vo, r, c) {
   return(vo * exp(-(t / (r * c))))
 }
@@ -36,6 +40,8 @@ capacitor.discharge <- function (t, vo, r, c) {
 #' @param c Capacitance (Farads).
 #' @param steps Time steps (Seconds).
 #' @return A vector with the voltages in the capacitor.
+#' 
+#' @seealso \code{\link{capacitor.charge.plot}}
 capacitor.charge.values <- function (vo, r, c, steps = 1) {
   values <- c()
   i <- 0
@@ -59,6 +65,8 @@ capacitor.charge.values <- function (vo, r, c, steps = 1) {
 #' @param c Capacitance (Farads).
 #' @param steps Time steps (Seconds).
 #' @return A vector with the voltages in the capacitor.
+#' 
+#' @seealso \code{\link{capacitor.discharge.plot}}
 capacitor.discharge.values <- function (vo, r, c, steps = 1) {
   values <- c()
   i <- 0
