@@ -29,7 +29,7 @@ capacitor.discharge <- function (t, vo, r, c) {
 }
 
 #' Retrieve a vector with the voltages in a capacitor during its entire
-#' charge cycle.
+#' charge cycle (useful for plotting).
 #' 
 #' @param vo Initial voltage (Volts).
 #' @param r Resistance (Ohms).
@@ -52,7 +52,7 @@ capacitor.charge.values <- function (vo, r, c, steps = 1) {
 }
 
 #' Retrieve a vector with the voltages in a capacitor during its entire
-#' discharge cycle.
+#' discharge cycle (useful for plotting).
 #' 
 #' @param vo Initial voltage (Volts).
 #' @param r Resistance (Ohms).
@@ -62,9 +62,9 @@ capacitor.charge.values <- function (vo, r, c, steps = 1) {
 capacitor.discharge.values <- function (vo, r, c, steps = 1) {
   values <- c()
   i <- 0
-  vt <- 0
+  vt <- vo
   
-  while (vt < vo) {
+  while (vt > 0) {
     vt <- capacitor.discharge(i, vo, r, c)
     values <- c(values, vt)
     

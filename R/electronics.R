@@ -4,5 +4,6 @@
 
 source("R/basics.R")
 source("R/filters.R")
+source("R/capacitor.R")
 
 #package.skeleton("electronics")
