@@ -6,6 +6,9 @@
 #'
 #' @author Nathan Campos \email{nathanpc@@dreamintech.net}
 
+library("ggplot2")
+
+
 #' Calculates the voltage in a capacitor at a exact time while it's charging.
 #' 
 #' @param t Time (Seconds).
@@ -89,8 +92,8 @@ capacitor.discharge.values <- function (vo, r, c, steps = 1) {
 #' @param c Capacitance (Farads).
 #' @param steps Time steps (Seconds).
 capacitor.charge.plot <- function (vo, r, c, steps = 1) {
-  # TODO: Use ggplot2.
-  plot.default(capacitor.charge.values(vo, r, c, steps), type="l", col="blue")
+  values <- capacitor.charge.values(vo, r, c, steps)
+  qplot(1:length(values), values, geom = "line")
 }
 
 #' Plot the capacitor discharging.
@@ -100,8 +103,8 @@ capacitor.charge.plot <- function (vo, r, c, steps = 1) {
 #' @param c Capacitance (Farads).
 #' @param steps Time steps (Seconds).
 capacitor.discharge.plot <- function (vo, r, c, steps = 1) {
-  # TODO: Use ggplot2.
-  plot.default(capacitor.discharge.values(vo, r, c, steps), type="l", col="blue")
+  values <- capacitor.discharge.values(vo, r, c, steps)
+  qplot(1:length(values), values, geom = "line")
 }
 
 #' Calculates how much time it takes to charge a capacitor.
